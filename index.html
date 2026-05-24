@@ -20,11 +20,27 @@
             --font-body: 'Poppins', sans-serif;
         }
 
+        /* 🔒 ANTI-COPY CSS: Mematikan seleksi teks dan drag gambar di seluruh website */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             letter-spacing: -0.01em;
+            -webkit-user-select: none; /* Safari */
+            -ms-user-select: none; /* IE 10 and Older */
+            user-select: none; /* Standard syntax */
+        }
+
+        img {
+            -webkit-user-drag: none; /* Mencegah gambar ditarik/didrag untuk disimpan */
+            user-drag: none;
+        }
+
+        /* Mengembalikan fungsi input jika nanti Anda menambah form / pencarian */
+        input, textarea {
+            -webkit-user-select: text;
+            -ms-user-select: text;
+            user-select: text;
         }
 
         body {
@@ -581,6 +597,42 @@
     </aside>
 
     <script>
+        // 🔒 ANTI-VIEW SOURCE SECURITY SCRIPT
+        
+        // 1. Matikan Klik Kanan (Context Menu)
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+        });
+
+        // 2. Blokir Kombinasi Tombol Pintas (Keyboard Shortcuts)
+        document.onkeydown = function(e) {
+            // Blokir F12 (DevTools)
+            if(e.keyCode == 123) {
+                return false;
+            }
+            // Blokir Ctrl+Shift+I (Inspect Element)
+            if(e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) {
+                return false;
+            }
+            // Blokir Ctrl+Shift+C (Inspect Element Mode)
+            if(e.ctrlKey && e.shiftKey && e.keyCode == 'C'.charCodeAt(0)) {
+                return false;
+            }
+            // Blokir Ctrl+Shift+J (Console)
+            if(e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) {
+                return false;
+            }
+            // Blokir Ctrl+U (View Source)
+            if(e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) {
+                return false;
+            }
+            // Blokir Ctrl+S (Save Page)
+            if(e.ctrlKey && e.keyCode == 'S'.charCodeAt(0)) {
+                return false;
+            }
+        };
+
+        // --- DATA ENGINE PRODUK ---
         const products = [
             { 
                 id: 1, 
@@ -588,7 +640,7 @@
                 name: 'ASICS GEL-LYTE III "Monotone Pack"', 
                 desc: 'Premium mesh and suede upper combination. Iconic split-tongue design with signature visible Gel cushioning. Finished in elegant tones of grey, cream, and dark brown. Includes premium box & extra laces.', 
                 price: 495000,
-                sizes: [38, 39, 40, 41, 42, 43, 44],
+                sizes: [36, 37, 38, 39, 40, 41, 42, 43, 44],
                 image: 'WhatsApp Image 2026-05-24 at 16.34.37.jpeg',
                 isLimited: true
             },
@@ -607,7 +659,6 @@
 
         const formatIDR = (number) => "IDR " + number.toLocaleString('id-ID');
 
-        // Dynamic Engine Component Render
         const renderProducts = () => {
             ['sepatu', 'tas', 'baju'].forEach(category => {
                 const grid = document.getElementById(`grid-${category}`);
@@ -620,7 +671,6 @@
                         ? `<img src="${product.image}" alt="${product.name}" class="product-image" onerror="this.style.display='none';">` 
                         : '';
 
-                    // Generate Dynamic Size UI Component if exists
                     let sizeHtml = '';
                     if (product.sizes) {
                         sizeHtml += `<div class="size-selector-title">Select Size</div><div class="size-container">`;
@@ -654,7 +704,6 @@
             });
         };
 
-        // Micro UX State Controller
         const selectSize = (element, productId, size) => {
             const container = element.parentElement;
             container.querySelectorAll('.size-pill').forEach(pill => pill.classList.remove('selected'));
@@ -665,7 +714,6 @@
         const addToCart = (productId) => {
             const product = products.find(p => p.id === productId);
             
-            // Check validation size requirement
             if (product.sizes && !selectedSizes[productId]) {
                 alert("Please graciously select your preferred size before adding to the selection.");
                 return;
