@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
+	<link rel="icon" type="image/x-icon" href="iconatas.png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>THE MAISON — Luxury Concept Store</title>
+    <title>BrandeRia — Branded • Murah • Trusted</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -20,23 +21,22 @@
             --font-body: 'Poppins', sans-serif;
         }
 
-        /* 🔒 ANTI-COPY CSS: Mematikan seleksi teks dan drag gambar di seluruh website */
+        /* 🔒 ANTI-COPY CSS */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             letter-spacing: -0.01em;
-            -webkit-user-select: none; /* Safari */
-            -ms-user-select: none; /* IE 10 and Older */
-            user-select: none; /* Standard syntax */
+            -webkit-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
         }
 
         img {
-            -webkit-user-drag: none; /* Mencegah gambar ditarik/didrag untuk disimpan */
+            -webkit-user-drag: none;
             user-drag: none;
         }
 
-        /* Mengembalikan fungsi input jika nanti Anda menambah form / pencarian */
         input, textarea {
             -webkit-user-select: text;
             -ms-user-select: text;
@@ -121,13 +121,8 @@
             transition: width 0.3s ease;
         }
 
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        .nav-links a:hover {
-            color: var(--accent-gold);
-        }
+        .nav-links a:hover::after { width: 100%; }
+        .nav-links a:hover { color: var(--accent-gold); }
 
         .cart-btn {
             background: none;
@@ -141,8 +136,9 @@
             transition: transform 0.2s;
         }
 
-        .cart-btn:hover {
-            transform: scale(1.05);
+        /* ⚡ ANIMASI FLYING PULSE PADA KERANJANG */
+        .cart-btn.pulse-animation {
+            animation: cartPop 0.4s ease-in-out;
         }
 
         .cart-badge {
@@ -265,9 +261,7 @@
             transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        .product-card:hover .product-image {
-            transform: scale(1.04);
-        }
+        .product-card:hover .product-image { transform: scale(1.04); }
 
         .product-image-placeholder {
             font-family: var(--font-heading);
@@ -353,10 +347,7 @@
             text-align: center;
         }
 
-        .size-pill:hover {
-            border-color: var(--primary-dark);
-        }
-
+        .size-pill:hover { border-color: var(--primary-dark); }
         .size-pill.selected {
             background: var(--primary-dark);
             color: var(--white);
@@ -392,7 +383,7 @@
             color: var(--white);
         }
 
-        /* Cart Sidebar Modern Architecture */
+        /* Cart Sidebar */
         .cart-sidebar {
             position: fixed;
             top: 0;
@@ -408,9 +399,7 @@
             flex-direction: column;
         }
 
-        .cart-sidebar.active {
-            right: 0;
-        }
+        .cart-sidebar.active { right: 0; }
 
         .cart-header {
             padding: 2.5rem 2rem 1.5rem 2rem;
@@ -453,9 +442,7 @@
             border-bottom: 1px solid var(--border-color);
         }
 
-        .cart-item-info {
-            flex-grow: 1;
-        }
+        .cart-item-info { flex-grow: 1; }
 
         .cart-item-info h4 {
             font-family: var(--font-heading);
@@ -507,9 +494,7 @@
             transition: background 0.3s ease;
         }
 
-        .btn-checkout:hover {
-            background: var(--accent-gold);
-        }
+        .btn-checkout:hover { background: var(--accent-gold); }
 
         /* Glass Overlay */
         .overlay {
@@ -526,10 +511,277 @@
         }
         .overlay.active { display: block; }
 
+        /* 🏛️ MODERN DESIGN FOOTER STYLING */
+        footer {
+            background: var(--primary-dark);
+            color: var(--white);
+            padding: 5rem 5% 2rem 5%;
+            margin-top: 5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr repeat(3, 1fr);
+            gap: 4rem;
+            padding-bottom: 4rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        @media (max-width: 992px) {
+            .footer-container { grid-template-columns: 1fr; gap: 3rem; }
+        }
+
+        .footer-brand h3 {
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        .footer-brand p {
+            color: #a0a0a0;
+            font-size: 0.85rem;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+            max-width: 320px;
+            font-weight: 300;
+        }
+
+        /* Newsletter Input Form */
+        .newsletter-form {
+            display: flex;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            max-width: 350px;
+        }
+
+        .newsletter-input {
+            background: none;
+            border: none;
+            padding: 0.8rem 0;
+            color: var(--white);
+            font-family: var(--font-body);
+            font-size: 0.85rem;
+            width: 100%;
+            outline: none;
+        }
+
+        .newsletter-input::placeholder { color: #666; }
+
+        .newsletter-btn {
+            background: none;
+            border: none;
+            color: var(--accent-gold);
+            cursor: pointer;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 500;
+        }
+
+        .footer-links-col h4 {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1.5rem;
+            color: var(--accent-gold);
+            font-weight: 500;
+        }
+
+        .footer-links-col ul {
+            list-style: none;
+        }
+
+        .footer-links-col ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links-col ul li a {
+            color: #a0a0a0;
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: color 0.3s;
+            font-weight: 300;
+        }
+
+        .footer-links-col ul li a:hover { color: var(--white); }
+
+        .footer-bottom {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding-top: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.75rem;
+            color: #666;
+        }
+
+        @media (max-width: 576px) {
+            .footer-bottom { flex-direction: column; gap: 1rem; text-align: center; }
+        }
+
+        /* Keyframes Animations */
         @keyframes fadeInDown {
             from { opacity: 0; transform: translateY(-20px); }
             to { opacity: 1; transform: translateY(0); }
         }
+
+        @keyframes cartPop {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.3); color: var(--accent-gold); }
+            100% { transform: scale(1); }
+        }
+		
+		/* ==========================================================================
+   📱 ULTRA-PREMIUM MOBILE RESPONSIVE ENGINE (FOR SMARTPHONES)
+   ========================================================================== */
+@media (max-width: 768px) {
+    /* 1. Pengaturan Body & Global Spacing */
+    body {
+        font-size: 14px;
+    }
+    
+    .top-bar {
+        font-size: 0.6rem;
+        padding: 0.5rem 0.8rem;
+        letter-spacing: 1px;
+    }
+
+    /* 2. Navigasi Mobile Header */
+    nav {
+        padding: 1rem 4%;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .logo {
+        font-size: 1.2rem;
+        letter-spacing: 2px;
+    }
+    
+    .logo img {
+        height: 26px; /* Mengecilkan logo sedikit di layar HP */
+    }
+
+    /* Mengubah menu navigasi atas menjadi bar horizontal yang bisa di-scroll secara halus */
+    .nav-links {
+        display: flex;
+        gap: 1.5rem;
+        overflow-x: auto;
+        white-space: nowrap;
+        padding: 0.5rem 0;
+        width: auto;
+        max-width: 60%;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none; /* Sembunyikan scrollbar di Firefox */
+    }
+    
+    .nav-links::-webkit-scrollbar {
+        display: none; /* Sembunyikan scrollbar di Chrome/Safari */
+    }
+
+    .nav-links a {
+        font-size: 0.7rem;
+        letter-spacing: 1px;
+    }
+
+    /* 3. Hero Section Adaptation */
+    .hero {
+        padding: 8rem 1rem;
+        margin-bottom: 3rem;
+        background-position: center center;
+    }
+
+    .hero h1 {
+        font-size: 2.2rem; /* Ukuran teks judul mengecil agar pas di satu baris layar HP */
+        letter-spacing: 2px;
+    }
+
+    .hero p {
+        font-size: 0.75rem;
+        letter-spacing: 3px;
+    }
+
+    /* 4. Katalog Grid Sistem 1 Kolom (Premium Look) */
+    .catalog {
+        padding: 0 4%;
+    }
+
+    .section-header {
+        margin-bottom: 2.5rem;
+    }
+
+    .section-title {
+        font-size: 1.8rem;
+    }
+
+    .grid {
+        grid-template-columns: 1fr !important; /* Paksa grid menjadi 1 baris ke bawah */
+        gap: 2.5rem;
+        margin-bottom: 4rem;
+    }
+
+    .product-image-wrapper {
+        height: 350px; /* Tinggi gambar yang proporsional untuk rasio layar handphone */
+    }
+
+    .product-info {
+        padding: 1.5rem 1rem;
+    }
+
+    .product-title {
+        font-size: 1.2rem;
+    }
+
+    /* 5. Fleksibilitas Drawer Keranjang Belanja di HP */
+    .cart-sidebar {
+        width: 100% !important; /* Keranjang belanja memenuhi penuh layar HP saat terbuka */
+        max-width: 100% !important;
+        right: -100%;
+    }
+    
+    .cart-sidebar.active {
+        right: 0;
+    }
+    
+    .cart-header {
+        padding: 1.5rem 1.5rem 1rem 1.5rem;
+    }
+    
+    .cart-items {
+        padding: 1.5rem;
+    }
+    
+    .cart-footer {
+        padding: 1.5rem;
+    }
+
+    /* 6. Footer Grid Responsif */
+    .footer-container {
+        grid-template-columns: 1fr !important; /* Elemen footer berderet vertikal */
+        gap: 2.5rem;
+        padding-bottom: 2.5rem;
+    }
+
+    .footer-brand p {
+        max-width: 100%;
+    }
+
+    .newsletter-form {
+        max-width: 100%;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        gap: 0.8rem;
+        text-align: center;
+        padding-top: 1.5rem;
+    }
+}
     </style>
 </head>
 <body>
@@ -538,14 +790,17 @@
 
     <header>
         <nav>
-            <a href="#" class="logo">The Maison</a>
+            <a href="#" class="logo" style="display: flex; align-items: center; gap: 12px;">
+    <img src="iconatas.png" alt="BrandeRia Logo" style="height: 32px; width: auto; object-fit: contain; -webkit-user-drag: none; user-drag: none;">
+    <span>BrandeRia</span>
+</a>
             <ul class="nav-links">
                 <li><a href="#sepatu">Footwear</a></li>
-                <li><a href="#tas">Leather Goods</a></li>
-                <li><a href="#baju">Apparel</a></li>
+                <li><a href="#tas">Iconic Bags</a></li>
+                <li><a href="#scraft">Apparel</a></li>
             </ul>
             <div class="nav-icons">
-                <button class="cart-btn" onclick="toggleCart()">
+                <button class="cart-btn" id="main-cart-btn" onclick="toggleCart()">
                     💼 <span class="cart-badge" id="cart-count">0</span>
                 </button>
             </div>
@@ -553,28 +808,29 @@
     </header>
 
     <section class="hero">
-        <p>A Study in Monotone Styling</p>
-        <h1>Modern Craft</h1>
+        <p>Barang branded murah tapi tetap keren?</p>
+        <h1>Branderia Shop</h1>
+		<p>Branded • Murah • Trusted</p>
     </section>
 
     <main class="catalog">
         <div id="sepatu" class="section-header">
-            <h2 class="section-title">Footwear Masterpieces</h2>
-            <p class="section-subtitle">Architectural Silhouettes & Premium Suede</p>
+            <h2 class="section-title">Footwear Branded</h2>
+            <p class="section-subtitle">Limited Stock & Premium Class</p>
         </div>
         <div class="grid" id="grid-sepatu"></div>
 
         <div id="tas" class="section-header">
-            <h2 class="section-title">Iconic Leather Goods</h2>
-            <p class="section-subtitle">Handcrafted Luxury Companion Bags</p>
+            <h2 class="section-title">Iconic Bag Goods</h2>
+            <p class="section-subtitle">Luxury Companion Bags</p>
         </div>
         <div class="grid" id="grid-tas"></div>
 
-        <div id="baju" class="section-header">
+        <div id="scraft" class="section-header">
             <h2 class="section-title">Signature Apparel</h2>
-            <p class="section-subtitle">Timeless Essentials Engineered for Comfort</p>
+            <p class="section-subtitle">Timeless Essentials for Comfort</p>
         </div>
-        <div class="grid" id="grid-baju"></div>
+        <div class="grid" id="grid-scraft"></div>
     </main>
 
     <div class="overlay" id="overlay" onclick="toggleCart()"></div>
@@ -596,63 +852,186 @@
         </div>
     </aside>
 
-    <script>
-        // 🔒 ANTI-VIEW SOURCE SECURITY SCRIPT
-        
-        // 1. Matikan Klik Kanan (Context Menu)
-        document.addEventListener('contextmenu', function(e) {
-            e.preventDefault();
-        });
+    <footer>
+        <div class="footer-container">
+            <div class="footer-brand">
+                <h3>BrandeRia</h3>
+                <p>Koleksi outfit branded dan fashion import dengan harga bersahabat. Semua barang dipilih dengan quality check terbaik.</p>
+                <div class="newsletter-form">
+                    <input type="email" class="newsletter-input" placeholder="Enter your email address">
+                    <button class="newsletter-btn" onclick="alert('Thank you for subscribing to branderia.')">Subscribe</button>
+                </div>
+            </div>
+            <div class="footer-links-col">
+                <h4>Collections</h4>
+                <ul>
+                    <li><a href="#sepatu">Premium Footwear</a></li>
+                    <li><a href="#tas">Iconic Bag</a></li>
+                    <li><a href="#scraft">Minimalist Apparel</a></li>
+                </ul>
+            </div>
+            <div class="footer-links-col">
+                <h4>Assistance</h4>
+                <ul>
+                    <li><a href="#">Order Tracking</a></li>
+                    <li><a href="#">Corporate Returns</a></li>
+                    <li><a href="#">Private Concierge</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>&copy; 2026 BrandeRia Studio Concept Store. All Rights Reserved.</span>
+            <span>Website ini diperuntukan tugas kelompok e-commerce</span>
+        </div>
+    </footer>
 
-        // 2. Blokir Kombinasi Tombol Pintas (Keyboard Shortcuts)
+    <script>
+        // 🔒 ANTI-VIEW SOURCE SECURITY SYSTEM
+        document.addEventListener('contextmenu', e => e.preventDefault());
         document.onkeydown = function(e) {
-            // Blokir F12 (DevTools)
-            if(e.keyCode == 123) {
-                return false;
-            }
-            // Blokir Ctrl+Shift+I (Inspect Element)
-            if(e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) {
-                return false;
-            }
-            // Blokir Ctrl+Shift+C (Inspect Element Mode)
-            if(e.ctrlKey && e.shiftKey && e.keyCode == 'C'.charCodeAt(0)) {
-                return false;
-            }
-            // Blokir Ctrl+Shift+J (Console)
-            if(e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) {
-                return false;
-            }
-            // Blokir Ctrl+U (View Source)
-            if(e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) {
-                return false;
-            }
-            // Blokir Ctrl+S (Save Page)
-            if(e.ctrlKey && e.keyCode == 'S'.charCodeAt(0)) {
-                return false;
-            }
+            if(e.keyCode == 123) return false;
+            if(e.ctrlKey && e.shiftKey && (e.keyCode == 'I'.charCodeAt(0) || e.keyCode == 'C'.charCodeAt(0) || e.keyCode == 'J'.charCodeAt(0))) return false;
+            if(e.ctrlKey && (e.keyCode == 'U'.charCodeAt(0) || e.keyCode == 'S'.charCodeAt(0))) return false;
         };
 
-        // --- DATA ENGINE PRODUK ---
-        const products = [
-            { 
-                id: 1, 
-                category: 'sepatu', 
-                name: 'ASICS GEL-LYTE III "Monotone Pack"', 
-                desc: 'Premium mesh and suede upper combination. Iconic split-tongue design with signature visible Gel cushioning. Finished in elegant tones of grey, cream, and dark brown. Includes premium box & extra laces.', 
-                price: 495000,
-                sizes: [36, 37, 38, 39, 40, 41, 42, 43, 44],
-                image: 'WhatsApp Image 2026-05-24 at 16.34.37.jpeg',
-                isLimited: true
-            },
-            { id: 2, category: 'sepatu', name: 'Vicuna Chelsea Boots', desc: 'Premium luxury Italian suede with bespoke Blake-stitched sole architecture.', price: 6500000, sizes: [40, 41, 42], image: '' },
-            { id: 3, category: 'sepatu', name: 'Monaco Loafers', desc: 'Classic evening silhouette constructed from hyper-polished patent leather.', price: 3800000, sizes: [39, 40, 41, 42], image: '' },
-            
-            { id: 4, category: 'tas', name: 'Atelier Briefcase', desc: 'Full-grain vachetta leather appointed with solid hand-brushed brass hardware.', price: 8500000, image: '' },
-            { id: 5, category: 'tas', name: 'Seraphina Sling Bag', desc: 'Architectural minimalist crossbody sculpted from ultra-soft French lambskin.', price: 5200000, image: '' },
-            
-            { id: 7, category: 'baju', name: 'Cashmere Blazer', desc: 'Woven from 100% pure Mongolian cashmere yarn in an unstructured silhouette.', price: 12000000, image: '' },
-            { id: 8, category: 'baju', name: 'Supima Cotton Shirt', desc: 'Spun from rare long-staple organic cotton fitted with genuine mother-of-pearl buttons.', price: 1500000, image: '' }
-        ];
+        // --- DATA ENGINE PRODUK DENGAN DETAIL SPECIFICATION ---
+const products = [
+    { 
+        id: 1, 
+        category: 'sepatu', 
+        name: 'ASICS GEL-LYTE III "Monotone Pack"', 
+        desc: 'Style modern sneakers dengan perpaduan warna grey, cream, dan dark brown yang elegan. Cocok untuk daily wear, casual outfit, hingga streetwear look premium.', 
+        price: 495000,
+        sizes: [38, 39, 40, 41, 42, 43, 44],
+        image: 'WhatsApp Image 2026-05-24 at 16.34.37.jpeg',
+        isLimited: true,
+        // 🌟 Tambahan Premium Detail Specification Object
+        details: {
+            "Brand": "ASICS",
+            "Series": "GEL-LYTE III",
+            "Colorway": "Monotone Pack Grey Cream",
+            "Material": "Mesh premium + suede combination",
+            "Insole": "Empuk & nyaman dipakai seharian",
+            "Sole": "Rubber outsole anti-slip",
+            "Model": "Unisex",
+            "Style": "Casual / Lifestyle Sneakers",
+            "Kondisi": "Premium Quality",
+            "Cocok Untuk": "✔️ Nongkrong, ✔️ Daily activity, ✔️ Kuliah/kerja santai, ✔️ Streetwear"
+        }
+    },
+    { 	id: 2,
+		category: 'sepatu',
+		name: 'ADIDAS KIDS Disney Nemo Adventure Sandals',
+		desc: 'Sandal anak premium dengan desain karakter Nemo yang lucu dan nyaman dipakai sehari-hari. Material ringan, fleksibel, dan easy on/off sehingga nyaman digunakan anak.',
+		price: 499000,
+		sizes: [25, 26, 27, 28, 29, 30, 31],
+		image: 'ADIDAS KIDS Disney Nemo Adventure Sandals.jpeg',
+		isLimited: true,
+		details: {
+            "Brand": "ADIDAS",
+            "Series": "Disney Nemo Exclusive",
+            "Colorway": "Monotone Pack Grey Cream",
+            "Material": "Mesh premium + suede combination",
+            "Insole": "Nyaman & ringan dipakai",
+            "Sole": "Flexible Sole",
+            "Model": "Unisex",
+            "Style": "Casual",
+            "Kondisi": "Premium Quality",
+            "Cocok Untuk": "✔️ Bermain, ✔️ Daily activity, ✔️ Jalan-Jalan"
+        }
+	},
+	{ 	
+		id: 3,
+		category: 'sepatu',
+		name: 'ADIDAS PUREBOUNCE+ “DUSTY ROSE” – WOMEN RUNNING SHOES',
+		desc: 'Super ringan & empuk sangat nyaman dipakai seharian memiliki sirkulasi udara baik didesain feminine dan modern',
+		price: 1299000,
+		sizes: [36, 37, 38, 39, 40],
+		image: 'ADIDAS PUREBOUNCE.jpeg',
+		details: {
+            "Brand": "ADIDAS",
+            "Series": "Purebounce+ / Purebounce Street",
+            "Colorway": "Dusty Rose Pink",
+            "Material": "Breathable Mesh Premium",
+            "Midsole": "Bounce Cushion Technology",
+			"Outsole": "Rubber Grip Anti Slip",
+            "Model": "Female",
+            "Style": "Running / Casual Sneakers",
+            "Kondisi": "New With Box",
+            "Cocok Untuk": "✔️ Running, ✔️ Outfit Casual, ✔️ Gym"
+        }
+	},
+    
+    {
+		id: 4,
+		category: 'tas',
+		name: 'Smiggle Animalia Kids Backpack',
+		desc: 'Kompartemen utama luas dengan zipper, memiliki kantong depan tambahan untuk alat tulis & aksesoris, tersedia side pocket untuk botol minum, strap empuk.',
+		price: 350000,
+		image: 'Smiggle Animalia Kids Backpack.jpeg',
+		isLimited: true,
+		details: {
+            "Brand": "SMIGGLE",
+            "Series": "Animalia Junior Backpack",
+            "Colorway": "Mint Blue / Tosca",
+            "Material": "Premium synthetic leather + polyester",
+            "Motif": "Hewan Lucu",
+            "Kondisi": "Brand New Box",
+            "Cocok Untuk": "✔️ Sekolah, ✔️ Day Care, ✔️ Les"
+        }
+	},
+    
+	{
+		id: 5,
+		category: 'tas',
+		name: 'Coach Lola Shoulder Bag Black',
+		desc: 'Menggabungkan kombinasi yang mudah dengan penampilan yang canggih, Lola adalah pahlawan lemari pakaian untuk sehari-hari. Dilengkapi dengan perangkat keras Signature kami, desain kulit kerikil yang dipoles ini memiliki interior yang luas, saku organisasi di dalamnya, dan penutup ritsleting yang aman.',
+		price: 6850000,
+		image: 'Coach-Lola-Shoulder-Bag-Black_1000x.webp',
+		isLimited: true,
+		details: {
+            "Brand": "COACH",
+            "Series": "Shoulder Bag",
+			"Material" : "Polished pebble leather",
+			"Lining" : "Leather lining",
+			"Inside" : "Snap pocket",
+			"Closing" : "Zip-top closure",
+			"Handle" : "Handle with 26.5cm drop",
+			"Color" : "Black",
+			"Size" : "29cm (L) x 18.5cm (H) x 10cm (W)",
+            "Kondisi": "Brand New Box",
+            "Cocok Untuk": "✔️ Care Card, ✔️ Price Tag, ✔️ Dust Bag"
+        }
+	},
+    
+    {
+		id: 7,
+		category: 'scraft',
+		name: 'Lily Series – Premium Silk Scarf Gift Box',
+		desc: 'Tampil elegan dalam setiap momen dengan Kami Lily Series Premium Silk Scarf. 🌸 Motif floral yang anggun dipadukan dengan bahan silky premium membuat penampilan makin classy dan mewah. Cocok untuk dipakai sendiri ataupun dijadikan hadiah spesial untuk orang tersayang 🤍',
+		price: 189000,
+		image: 'Lily Series – Premium Silk Scarf Gift Box.jpeg',
+		details: {
+            "Brand": "KAMI",
+            "Series": "Premium Silk Scraft",
+			"Material" : "premium silky satin",
+			"Multifungsi" : "bisa dipakai sebagai hijab scarf, neck scarf, tas accessory, hingga hair scarf",
+			"Ukuran" : "90 x 90 cm",
+			"Warna" : "Navy Floral Lily",
+			"Keunggulan" : "Tidak panas saat digunakan, Tampilan glossy premium",
+			"Cocok Untuk" : "outfit formal maupun casual",
+			"Isi Paket" : "1 pcs Premium Silk Scarf, 1 pcs Exclusive Hard Box, Thank You Card, Hang Tag Exclusive"
+        }
+	},
+		
+    {
+		id: 8,
+		category: '',
+		name: 'Supima Cotton Shirt',
+		desc: 'Spun from rare long-staple organic cotton fitted with genuine mother-of-pearl buttons.',
+		price: 1500000,
+		image: '' }
+];
 
         let cart = [];
         let selectedSizes = {};
@@ -660,49 +1039,96 @@
         const formatIDR = (number) => "IDR " + number.toLocaleString('id-ID');
 
         const renderProducts = () => {
-            ['sepatu', 'tas', 'baju'].forEach(category => {
-                const grid = document.getElementById(`grid-${category}`);
-                if(!grid) return;
-                const categoryProducts = products.filter(p => p.category === category);
-                
-                let html = '';
-                categoryProducts.forEach(product => {
-                    const imageHtml = product.image 
-                        ? `<img src="${product.image}" alt="${product.name}" class="product-image" onerror="this.style.display='none';">` 
-                        : '';
+    ['sepatu', 'tas', 'scraft'].forEach(category => {
+        const grid = document.getElementById(`grid-${category}`);
+        if(!grid) return;
+        const categoryProducts = products.filter(p => p.category === category);
+        
+        let html = '';
+        categoryProducts.forEach(product => {
+            const imageHtml = product.image 
+                ? `<img src="${product.image}" alt="${product.name}" class="product-image" onerror="this.style.display='none';">` 
+                : '';
 
-                    let sizeHtml = '';
-                    if (product.sizes) {
-                        sizeHtml += `<div class="size-selector-title">Select Size</div><div class="size-container">`;
-                        product.sizes.forEach(size => {
-                            sizeHtml += `<div class="size-pill" data-product="${product.id}" data-size="${size}" onclick="selectSize(this, ${product.id}, ${size})">${size}</div>`;
-                        });
-                        sizeHtml += `</div>`;
-                    }
-
-                    html += `
-                        <div class="product-card">
-                            <div class="product-image-wrapper">
-                                ${imageHtml}
-                                <div class="product-image-placeholder">${product.name}</div>
-                            </div>
-                            <div class="product-info">
-                                <div class="category-row">
-                                    <span class="category-tag">${product.category}</span>
-                                    ${product.isLimited ? `<span class="stock-tag">⚡ Limited Stock</span>` : ''}
-                                </div>
-                                <h3 class="product-title">${product.name}</h3>
-                                <p class="product-desc">${product.desc}</p>
-                                ${sizeHtml}
-                                <div class="product-price">${formatIDR(product.price)}</div>
-                                <button class="btn-add" onclick="addToCart(${product.id})">Add to Selection</button>
-                            </div>
-                        </div>
-                    `;
+            let sizeHtml = '';
+            if (product.sizes) {
+                sizeHtml += `<div class="size-selector-title">Select Size</div><div class="size-container">`;
+                product.sizes.forEach(size => {
+                    sizeHtml += `<div class="size-pill" data-product="${product.id}" data-size="${size}" onclick="selectSize(this, ${product.id}, ${size})">${size}</div>`;
                 });
-                grid.innerHTML = html;
-            });
-        };
+                sizeHtml += `</div>`;
+            }
+
+            // ⚡ GENERATE ELEGANT HIDE & SHOW ACCORDION SPECIFICATIONS
+            let detailsHtml = '';
+            if (product.details) {
+                let tableRows = '';
+                for (const [key, value] of Object.entries(product.details)) {
+                    tableRows += `
+                        <tr style="border-bottom: 1px solid #f5f5f5;">
+                            <td style="padding: 0.5rem 0; font-weight: 500; color: var(--text-main); width: 35%; vertical-align: top;">${key}</td>
+                            <td style="padding: 0.5rem 0; color: var(--text-muted); line-height: 1.4;">${value}</td>
+                        </tr>
+                    `;
+                }
+
+                detailsHtml += `
+                    <div style="margin-top: 0.5rem; margin-bottom: 1.5rem; border: 1px solid var(--border-color); border-radius: 4px; overflow: hidden;">
+                        <div onclick="toggleSpecs(this)" style="display: flex; justify-content: space-between; align-items: center; padding: 0.8rem 1rem; background: #fafafa; cursor: pointer; user-select: none;">
+                            <span style="font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: var(--primary-dark);">✨ View Specifications</span>
+                            <span class="arrow-icon" style="font-size: 0.65rem; color: var(--text-muted); transition: transform 0.3s ease;">▼</span>
+                        </div>
+                        <div class="specs-content" style="display: none; padding: 0 1rem 0.5rem 1rem; background: #ffffff; border-top: 1px solid var(--border-color);">
+                            <table style="width: 100%; border-collapse: collapse; font-size: 0.75rem;">
+                                ${tableRows}
+                            </table>
+                        </div>
+                    </div>
+                `;
+            }
+
+            html += `
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        ${imageHtml}
+                        <div class="product-image-placeholder">${product.name}</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="category-row">
+                            <span class="category-tag">${product.category}</span>
+                            ${product.isLimited ? `<span class="stock-tag">⚡ Limited Stock</span>` : ''}
+                        </div>
+                        <h3 class="product-title">${product.name}</h3>
+                        <p class="product-desc">${product.desc}</p>
+                        
+                        ${detailsHtml} 
+                        ${sizeHtml}
+                        
+                        <div class="product-price">${formatIDR(product.price)}</div>
+                        <button class="btn-add" onclick="addToCart(${product.id})">Add to Selection</button>
+                    </div>
+                </div>
+            `;
+        });
+        grid.innerHTML = html;
+    });
+};
+
+// ⚡ FUNGSI JAVASCRIPT UNTUK MENANGKANI HIDE & SHOW INTERACTION
+const toggleSpecs = (element) => {
+    const content = element.nextElementSibling;
+    const arrow = element.querySelector('.arrow-icon');
+    
+    if (content.style.display === "none" || content.style.display === "") {
+        content.style.display = "block";
+        arrow.innerText = "▲";
+        arrow.style.color = "var(--accent-gold)";
+    } else {
+        content.style.display = "none";
+        arrow.innerText = "▼";
+        arrow.style.color = "var(--text-muted)";
+    }
+};
 
         const selectSize = (element, productId, size) => {
             const container = element.parentElement;
@@ -726,7 +1152,15 @@
 
             cart.push(cartItem);
             updateCartUI();
-            toggleCart(); 
+            
+            // ⚡ EXECUTE FLYING CARK KINETIC ANIMATION
+            const cartBtn = document.getElementById('main-cart-btn');
+            cartBtn.classList.remove('pulse-animation');
+            void cartBtn.offsetWidth; // Trigger reflow untuk mengulang animasi CSS
+            cartBtn.classList.add('pulse-animation');
+            
+            // Auto open sidebar after a tiny organic delay
+            setTimeout(() => { toggleCart(); }, 300);
         };
 
         const removeFromCart = (index) => {
@@ -779,10 +1213,10 @@
 
         const processCheckout = () => {
             if (cart.length === 0) {
-                alert("Your compilation folder is empty.");
+                alert("Keranjang masih kosong woi!!.");
                 return;
             }
-            alert(`Redirecting to international premium billing console for ${document.getElementById('total-price').innerText}. Execution complete.`);
+            alert(`Tidak ada pembayaran ${document.getElementById('total-price').innerText}. Karena hanya untuk tugas e-commerce.`);
             cart = [];
             updateCartUI();
             toggleCart();
