@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THE MAISON — Luxury Concept Store</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-dark: #0a0a0a; 
+            --accent-gold: #bc9c65;   
+            --accent-gold-light: #f9f6f0;
+            --bg-creme: #fafafa;      
+            --text-main: #1c1c1c;
+            --text-muted: #828282;
+            --border-color: #eaeaea;  
+            --white: #ffffff;
+            
+            --font-heading: 'Playfair Display', serif;
+            --font-body: 'Poppins', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            letter-spacing: -0.01em;
+        }
+
+        body {
+            background-color: var(--bg-creme);
+            color: var(--text-main);
+            font-family: var(--font-body);
+            -webkit-font-smoothing: antialiased; 
+            overflow-x: hidden;
+        }
+
+        /* Top Bar Announcement */
+        .top-bar {
+            background: var(--primary-dark);
+            color: var(--white);
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-align: center;
+            padding: 0.6rem 1rem;
+            font-weight: 400;
+        }
+
+        /* Navigation - Frosted Glass */
+        header {
+            background: rgba(255, 255, 255, 0.8); 
+            backdrop-filter: blur(20px); 
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-family: var(--font-heading);
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+            text-decoration: none;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 3.5rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-main);
+            font-weight: 400;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--accent-gold);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-gold);
+        }
+
+        .cart-btn {
+            background: none;
+            border: none;
+            font-size: 1.1rem;
+            cursor: pointer;
+            position: relative;
+            color: var(--primary-dark);
+            display: flex;
+            align-items: center;
+            transition: transform 0.2s;
+        }
+
+        .cart-btn:hover {
+            transform: scale(1.05);
+        }
+
+        .cart-badge {
+            background: var(--primary-dark);
+            color: var(--white);
+            font-size: 0.65rem;
+            font-weight: 500;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            position: absolute;
+            top: -8px;
+            right: -10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--white);
+        }
+
+        /* Hero Editorial Showcase */
+        .hero {
+            background: linear-gradient(to bottom, rgba(10, 10, 10, 0.2), rgba(10, 10, 10, 0.75)), 
+                        url('https://images.unsplash.com/photo-1490481651871-ab68de25d43d?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center 35%;
+            background-attachment: fixed; 
+            text-align: center;
+            padding: 14rem 1rem;
+            margin-bottom: 5rem;
+        }
+
+        .hero h1 {
+            font-family: var(--font-heading);
+            font-size: 4.5rem;
+            font-weight: 400;
+            margin-bottom: 1rem;
+            color: var(--white); 
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            animation: fadeInDown 1s ease;
+        }
+
+        .hero p {
+            font-size: 0.9rem;
+            color: var(--accent-gold); 
+            font-weight: 500;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+        }
+
+        /* Main Studio Layout */
+        .catalog {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 5%;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-family: var(--font-heading);
+            font-size: 2.4rem;
+            font-weight: 400;
+            color: var(--primary-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .section-subtitle {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); 
+            gap: 4rem 3rem; 
+            margin-bottom: 8rem;
+        }
+
+        @media (max-width: 1024px) { .grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 640px) { .grid { grid-template-columns: 1fr; } }
+
+        /* Advanced Elegant Product Card */
+        .product-card {
+            background: var(--white);
+            border: 1px solid var(--border-color);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.03);
+            border-color: #ccc;
+        }
+
+        .product-image-wrapper {
+            width: 100%;
+            height: 420px;
+            overflow: hidden;
+            background: #fdfdfd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .product-card:hover .product-image {
+            transform: scale(1.04);
+        }
+
+        .product-image-placeholder {
+            font-family: var(--font-heading);
+            color: #e0e0e0;
+            font-style: italic;
+            font-size: 1.4rem;
+            position: absolute;
+            z-index: 1;
+        }
+
+        .product-info {
+            padding: 2rem 1.5rem;
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .category-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.8rem;
+        }
+
+        .category-tag {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        .stock-tag {
+            font-size: 0.65rem;
+            color: var(--accent-gold);
+            text-transform: uppercase;
+            font-weight: 500;
+        }
+
+        .product-title {
+            font-family: var(--font-heading);
+            font-size: 1.4rem;
+            font-weight: 400;
+            margin-bottom: 0.8rem;
+            color: var(--primary-dark);
+            line-height: 1.3;
+        }
+
+        .product-desc {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+            font-weight: 300;
+            flex-grow: 1;
+        }
+
+        /* Size Selector Component */
+        .size-selector-title {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.6rem;
+            color: var(--text-main);
+            font-weight: 500;
+        }
+
+        .size-container {
+            display: flex;
+            gap: 0.4rem;
+            flex-wrap: wrap;
+            margin-bottom: 1.5rem;
+        }
+
+        .size-pill {
+            border: 1px solid var(--border-color);
+            padding: 0.4rem 0.8rem;
+            font-size: 0.75rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            background: var(--white);
+            min-width: 38px;
+            text-align: center;
+        }
+
+        .size-pill:hover {
+            border-color: var(--primary-dark);
+        }
+
+        .size-pill.selected {
+            background: var(--primary-dark);
+            color: var(--white);
+            border-color: var(--primary-dark);
+        }
+
+        .product-price {
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: var(--primary-dark);
+            letter-spacing: 0.5px;
+            margin-bottom: 1.5rem;
+            border-top: 1px dashed var(--border-color);
+            padding-top: 1rem;
+        }
+
+        .btn-add {
+            background: transparent;
+            color: var(--primary-dark);
+            border: 1px solid var(--primary-dark);
+            padding: 1rem;
+            cursor: pointer;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.75rem;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .btn-add:hover {
+            background: var(--primary-dark);
+            color: var(--white);
+        }
+
+        /* Cart Sidebar Modern Architecture */
+        .cart-sidebar {
+            position: fixed;
+            top: 0;
+            right: -480px;
+            width: 100%;
+            max-width: 480px;
+            height: 100vh;
+            background: var(--white);
+            box-shadow: -15px 0 40px rgba(0,0,0,0.06);
+            transition: right 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .cart-sidebar.active {
+            right: 0;
+        }
+
+        .cart-header {
+            padding: 2.5rem 2rem 1.5rem 2rem;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .cart-header h2 {
+            font-family: var(--font-heading);
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 1.4rem;
+        }
+
+        .close-cart {
+            background: none;
+            border: none;
+            font-size: 1.6rem;
+            cursor: pointer;
+            color: var(--text-main);
+            transition: transform 0.2s;
+        }
+        .close-cart:hover { transform: rotate(90deg); }
+
+        .cart-items {
+            flex-grow: 1;
+            padding: 2rem;
+            overflow-y: auto;
+        }
+
+        .cart-item {
+            display: flex;
+            gap: 1.2rem;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .cart-item-info {
+            flex-grow: 1;
+        }
+
+        .cart-item-info h4 {
+            font-family: var(--font-heading);
+            font-size: 1.05rem;
+            margin-bottom: 0.3rem;
+            font-weight: 500;
+            color: var(--primary-dark);
+        }
+
+        .cart-item-meta {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+        }
+
+        .cart-item-price {
+            color: var(--text-main);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .cart-footer {
+            padding: 2.5rem 2rem;
+            border-top: 1px solid var(--border-color);
+            background: #fafafa;
+        }
+
+        .cart-total {
+            display: flex;
+            justify-content: space-between;
+            font-size: 1rem;
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn-checkout {
+            background: var(--primary-dark);
+            color: var(--white);
+            width: 100%;
+            padding: 1.3rem;
+            border: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .btn-checkout:hover {
+            background: var(--accent-gold);
+        }
+
+        /* Glass Overlay */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.2);
+            display: none;
+            z-index: 900;
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+        }
+        .overlay.active { display: block; }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-bar">Complimentary Global Shipping on Orders Over IDR 5.000.000</div>
+
+    <header>
+        <nav>
+            <a href="#" class="logo">The Maison</a>
+            <ul class="nav-links">
+                <li><a href="#sepatu">Footwear</a></li>
+                <li><a href="#tas">Leather Goods</a></li>
+                <li><a href="#baju">Apparel</a></li>
+            </ul>
+            <div class="nav-icons">
+                <button class="cart-btn" onclick="toggleCart()">
+                    💼 <span class="cart-badge" id="cart-count">0</span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <p>A Study in Monotone Styling</p>
+        <h1>Modern Craft</h1>
+    </section>
+
+    <main class="catalog">
+        <div id="sepatu" class="section-header">
+            <h2 class="section-title">Footwear Masterpieces</h2>
+            <p class="section-subtitle">Architectural Silhouettes & Premium Suede</p>
+        </div>
+        <div class="grid" id="grid-sepatu"></div>
+
+        <div id="tas" class="section-header">
+            <h2 class="section-title">Iconic Leather Goods</h2>
+            <p class="section-subtitle">Handcrafted Luxury Companion Bags</p>
+        </div>
+        <div class="grid" id="grid-tas"></div>
+
+        <div id="baju" class="section-header">
+            <h2 class="section-title">Signature Apparel</h2>
+            <p class="section-subtitle">Timeless Essentials Engineered for Comfort</p>
+        </div>
+        <div class="grid" id="grid-baju"></div>
+    </main>
+
+    <div class="overlay" id="overlay" onclick="toggleCart()"></div>
+
+    <aside class="cart-sidebar" id="cart-sidebar">
+        <div class="cart-header">
+            <h2>Your Selection</h2>
+            <button class="close-cart" onclick="toggleCart()">×</button>
+        </div>
+        <div class="cart-items" id="cart-items">
+            <p style="color: #999; text-align: center; margin-top: 3rem; font-weight: 300; font-style: italic;">No masterpieces selected yet.</p>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Subtotal</span>
+                <span id="total-price">IDR 0</span>
+            </div>
+            <button class="btn-checkout" onclick="processCheckout()">Request Secure Order</button>
+        </div>
+    </aside>
+
+    <script>
+        const products = [
+            { 
+                id: 1, 
+                category: 'sepatu', 
+                name: 'ASICS GEL-LYTE III "Monotone Pack"', 
+                desc: 'Premium mesh and suede upper combination. Iconic split-tongue design with signature visible Gel cushioning. Finished in elegant tones of grey, cream, and dark brown. Includes premium box & extra laces.', 
+                price: 495000,
+                sizes: [38, 39, 40, 41, 42, 43, 44],
+                image: 'WhatsApp Image 2026-05-24 at 16.34.37.jpeg',
+                isLimited: true
+            },
+            { id: 2, category: 'sepatu', name: 'Vicuna Chelsea Boots', desc: 'Premium luxury Italian suede with bespoke Blake-stitched sole architecture.', price: 6500000, sizes: [40, 41, 42], image: '' },
+            { id: 3, category: 'sepatu', name: 'Monaco Loafers', desc: 'Classic evening silhouette constructed from hyper-polished patent leather.', price: 3800000, sizes: [39, 40, 41, 42], image: '' },
+            
+            { id: 4, category: 'tas', name: 'Atelier Briefcase', desc: 'Full-grain vachetta leather appointed with solid hand-brushed brass hardware.', price: 8500000, image: '' },
+            { id: 5, category: 'tas', name: 'Seraphina Sling Bag', desc: 'Architectural minimalist crossbody sculpted from ultra-soft French lambskin.', price: 5200000, image: '' },
+            
+            { id: 7, category: 'baju', name: 'Cashmere Blazer', desc: 'Woven from 100% pure Mongolian cashmere yarn in an unstructured silhouette.', price: 12000000, image: '' },
+            { id: 8, category: 'baju', name: 'Supima Cotton Shirt', desc: 'Spun from rare long-staple organic cotton fitted with genuine mother-of-pearl buttons.', price: 1500000, image: '' }
+        ];
+
+        let cart = [];
+        let selectedSizes = {};
+
+        const formatIDR = (number) => "IDR " + number.toLocaleString('id-ID');
+
+        // Dynamic Engine Component Render
+        const renderProducts = () => {
+            ['sepatu', 'tas', 'baju'].forEach(category => {
+                const grid = document.getElementById(`grid-${category}`);
+                if(!grid) return;
+                const categoryProducts = products.filter(p => p.category === category);
+                
+                let html = '';
+                categoryProducts.forEach(product => {
+                    const imageHtml = product.image 
+                        ? `<img src="${product.image}" alt="${product.name}" class="product-image" onerror="this.style.display='none';">` 
+                        : '';
+
+                    // Generate Dynamic Size UI Component if exists
+                    let sizeHtml = '';
+                    if (product.sizes) {
+                        sizeHtml += `<div class="size-selector-title">Select Size</div><div class="size-container">`;
+                        product.sizes.forEach(size => {
+                            sizeHtml += `<div class="size-pill" data-product="${product.id}" data-size="${size}" onclick="selectSize(this, ${product.id}, ${size})">${size}</div>`;
+                        });
+                        sizeHtml += `</div>`;
+                    }
+
+                    html += `
+                        <div class="product-card">
+                            <div class="product-image-wrapper">
+                                ${imageHtml}
+                                <div class="product-image-placeholder">${product.name}</div>
+                            </div>
+                            <div class="product-info">
+                                <div class="category-row">
+                                    <span class="category-tag">${product.category}</span>
+                                    ${product.isLimited ? `<span class="stock-tag">⚡ Limited Stock</span>` : ''}
+                                </div>
+                                <h3 class="product-title">${product.name}</h3>
+                                <p class="product-desc">${product.desc}</p>
+                                ${sizeHtml}
+                                <div class="product-price">${formatIDR(product.price)}</div>
+                                <button class="btn-add" onclick="addToCart(${product.id})">Add to Selection</button>
+                            </div>
+                        </div>
+                    `;
+                });
+                grid.innerHTML = html;
+            });
+        };
+
+        // Micro UX State Controller
+        const selectSize = (element, productId, size) => {
+            const container = element.parentElement;
+            container.querySelectorAll('.size-pill').forEach(pill => pill.classList.remove('selected'));
+            element.classList.add('selected');
+            selectedSizes[productId] = size;
+        };
+
+        const addToCart = (productId) => {
+            const product = products.find(p => p.id === productId);
+            
+            // Check validation size requirement
+            if (product.sizes && !selectedSizes[productId]) {
+                alert("Please graciously select your preferred size before adding to the selection.");
+                return;
+            }
+
+            const cartItem = {
+                ...product,
+                chosenSize: selectedSizes[productId] || null
+            };
+
+            cart.push(cartItem);
+            updateCartUI();
+            toggleCart(); 
+        };
+
+        const removeFromCart = (index) => {
+            cart.splice(index, 1);
+            updateCartUI();
+        };
+
+        const updateCartUI = () => {
+            const cartItems = document.getElementById('cart-items');
+            const cartCount = document.getElementById('cart-count');
+            const totalPrice = document.getElementById('total-price');
+
+            cartCount.innerText = cart.length;
+
+            if (cart.length === 0) {
+                cartItems.innerHTML = '<p style="color: #999; text-align: center; margin-top: 3rem; font-weight: 300; font-style: italic;">No masterpieces selected yet.</p>';
+                totalPrice.innerText = formatIDR(0);
+                return;
+            }
+
+            let html = '';
+            let total = 0;
+
+            cart.forEach((item, index) => {
+                total += item.price;
+                const sizeBadge = item.chosenSize ? `<div class="cart-item-meta">Size: Standard ${item.chosenSize}</div>` : '';
+                const itemImg = item.image ? `<img src="${item.image}" style="width:100%; height:100%; object-fit:cover;">` : 'M';
+                
+                html += `
+                    <div class="cart-item">
+                        <div style="width: 70px; height: 85px; background: #fafafa; border: 1px solid var(--border-color); display:flex; align-items:center; justify-content:center; font-size:0.6rem; color:#ccc; overflow:hidden;">${itemImg}</div>
+                        <div class="cart-item-info">
+                            <h4>${item.name}</h4>
+                            ${sizeBadge}
+                            <span class="cart-item-price">${formatIDR(item.price)}</span>
+                        </div>
+                        <button style="color: #999; border: none; background: none; cursor: pointer; margin-left:auto; font-size:0.75rem; text-transform:uppercase; letter-spacing:1px;" onclick="removeFromCart(${index})">Remove</button>
+                    </div>
+                `;
+            });
+
+            cartItems.innerHTML = html;
+            totalPrice.innerText = formatIDR(total);
+        };
+
+        const toggleCart = () => {
+            document.getElementById('cart-sidebar').classList.toggle('active');
+            document.getElementById('overlay').classList.toggle('active');
+        };
+
+        const processCheckout = () => {
+            if (cart.length === 0) {
+                alert("Your compilation folder is empty.");
+                return;
+            }
+            alert(`Redirecting to international premium billing console for ${document.getElementById('total-price').innerText}. Execution complete.`);
+            cart = [];
+            updateCartUI();
+            toggleCart();
+        };
+
+        renderProducts();
+    </script>
+</body>
+</html>
